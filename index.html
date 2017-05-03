@@ -345,6 +345,29 @@
                 </div>
                 <!-- .end .wrap -->
             </section>
+            <section>
+                <div class="wrap">
+                    <div class="card-60 bg-white">
+                        <figure>
+                            <img src="static/images/gallery/IMG_0435.JPG" alt="Big Ben, London">
+                        </figure>
+                        <!-- end figure-->
+                        <div class="flex-content">
+                            <h2>
+                                強化學習工作坊
+                            </h2>
+                            <p>2017/05/03</p>
+                            <p>
+                                本次工作坊邀請到陳嘉葳先生，來與我們分享強化學習(Reinforcement Learning)的數學模型與實作。<br><br><br><br><br>
+                            </p>
+                        </div>
+
+                        <!-- end .flex-content-->
+                    </div>
+                    <!-- end .card-50-->
+                </div>
+                <!-- .end .wrap -->
+            </section>
             <section class="bg-apple aligncenter">
                 <h2>除此之外...</h2>
             </section>
@@ -405,8 +428,6 @@
             </section>
             <section>
                 <div class="wrap">
-                    <h2>讀書會在讀什麼？</h2>
-                    <hr>
                     <ul class="flexblock gallery">
                         <li>
                             <a href="#">
@@ -422,9 +443,9 @@
                             <a href="#">
                                 <figure>
                                     <img alt="Thumbnail" src="static/images/gallery/mlgpu/0502/P_20170502_192833.jpg">
-                                <figcaption>
+                                    <figcaption>
                                         <p>Shape Matching and Object Recognition</p>
-                                </figcaption>
+                                    </figcaption>
                                 </figure>
                             </a>
                         </li>
@@ -551,7 +572,7 @@ def past():
                 </div>
             </section>
             <section class="bg-black slide-bottom">
-                <span class="background light" style="background-image:url('static/images/gallery/google03.jpg')"></span>
+                <span class="background light" style="background-image:url('static/images/gallery/deffuture.jpg')"></span>
                 <div class="wrap fadeInUp">
                     <div class="grid content-center">
                         <div class="column1 bg-trans-dark">
@@ -592,26 +613,26 @@ def future():
             $("#danmu").danmu({ width: "100%", zindex: 10 });
             $('#danmu').danmu('danmuStart');
             nowtime = $('#danmu').data("nowTime");
-            var aDanmu = { text: "hello", color: "red", size: 1, position: 0, time: nowtime + 1 }; 
-            $('#danmu').danmu("addDanmu",aDanmu);
+            var aDanmu = { text: "hello", color: "red", size: 1, position: 0, time: nowtime + 1 };
+            $('#danmu').danmu("addDanmu", aDanmu);
         });
         $(document).ready(function () {
-        // NodeJS Server
-        var nodejs_server = "dpt.emath.tw:7777";       
-        // 進行 connect
-        var socket = io.connect("http://" + nodejs_server);
-        //var add=0;
-        // 偵聽 nodejs 事件
+            // NodeJS Server
+            var nodejs_server = "dpt.emath.tw:7777";
+            // 進行 connect
+            var socket = io.connect("http://" + nodejs_server);
+            //var add=0;
+            // 偵聽 nodejs 事件
             socket.on("say", function (data) {
-                console.log(data.msg); 
-                if ($('#danmu').data("paused")){ 
-                    nowtime = 0; 
-                } else { 
-                    nowtime = $('#danmu').data("nowTime"); 
-                } 
-                color = ["blue", "yellow", "orange", "red"]; 
-                var c = Math.floor((Math.random() * color.length)); 
-                var aDanmu = { text: data.msg, color: color[c], size: 1, position: 0, time: nowtime + 1 }; 
+                console.log(data.msg);
+                if ($('#danmu').data("paused")) {
+                    nowtime = 0;
+                } else {
+                    nowtime = $('#danmu').data("nowTime");
+                }
+                color = ["blue", "yellow", "orange", "red"];
+                var c = Math.floor((Math.random() * color.length));
+                var aDanmu = { text: data.msg, color: color[c], size: 1, position: 0, time: nowtime + 1 };
                 $('#danmu').danmu("addDanmu", aDanmu);
             });
 
