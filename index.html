@@ -100,6 +100,7 @@
 </head>
 
 <body>
+    <div id="danmu"></div>
     <main role="main">
         <article id="webslides" class="vertical">
             <!-- Quick Guide
@@ -380,20 +381,20 @@
                                 <figure>
                                     <img alt="Thumbnail " src="static/images/gallery/mlgpu/0321/P_20170321_192606.jpg">
 
-<figcaption>
-    <p>Regularization, Cross Validation</p>
-</figcaption>
+                                    <figcaption>
+                                        <p>Regularization, Cross Validation</p>
+                                    </figcaption>
                                 </figure>
-                                
+
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <figure>
                                     <img alt="Thumbnail" src="static/images/gallery/mlgpu/0411/P_20170411_201008.jpg">
-<figcaption>
-    <p>Introduction to Neural Network</p>
-</figcaption>
+                                    <figcaption>
+                                        <p>Introduction to Neural Network</p>
+                                    </figcaption>
                                 </figure>
                             </a>
                         </li>
@@ -402,31 +403,31 @@
                 <!-- .end .wrap -->
             </section>
             <section>
-    <div class="wrap">
-        <h2>讀書會在讀什麼？</h2>
-        <hr>
-        <ul class="flexblock gallery">
-            <li>
-                <a href="#">
-                    <figure>
-                        <img alt="Thumbnail" src="static/images/gallery/mlgpu/0418/P_20170418_190334.jpg">
-                    <figcaption>
-    <p>Cost Function Optimization and Overfitting</p>
-</figcaption>
-                    </figure>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <figure>
-                        <img alt="Thumbnail" src="static/images/gallery/mlgpu/0502/P_20170502_192833.jpg">
-                    </figure>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <!-- .end .wrap -->
-</section>
+                <div class="wrap">
+                    <h2>讀書會在讀什麼？</h2>
+                    <hr>
+                    <ul class="flexblock gallery">
+                        <li>
+                            <a href="#">
+                                <figure>
+                                    <img alt="Thumbnail" src="static/images/gallery/mlgpu/0418/P_20170418_190334.jpg">
+                                    <figcaption>
+                                        <p>Cost Function Optimization and Overfitting</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <figure>
+                                    <img alt="Thumbnail" src="static/images/gallery/mlgpu/0502/P_20170502_192833.jpg">
+                                </figure>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- .end .wrap -->
+            </section>
             <section class="bg-black aligncenter">
                 <span class="background dark" style="background-image:url('static/images/gallery/dapingtai.jpg')"></span>
                 <div class="wrap fadeInUp">
@@ -494,7 +495,7 @@
                 <!-- .end .wrap -->
             </section>
             <section class="bg-black-blue aligncenter">
-    <!--<span class="background-right-bottom" style="background-image:url('static/images/std_14.png'); z-index:5;"></span>                -->
+                <!--<span class="background-right-bottom" style="background-image:url('static/images/std_14.png'); z-index:5;"></span>                -->
                 <div class="wrap">
                     <h2>透過「大平台」建立學習社群</h2>
                     <p>由助教及小助教群經營「大平台」（課後任務解題回饋系統），結合實體互動&線上問答，提高學習意願。</p>
@@ -546,11 +547,11 @@ def past():
                 </div>
             </section>
             <section class="bg-black slide-bottom">
-    <span class="background light" style="background-image:url('static/images/gallery/google03.jpg')"></span>
-    <div class="wrap fadeInUp">
-        <div class="grid content-center">
-            <div class="column1 bg-trans-dark">
-                <pre>
+                <span class="background light" style="background-image:url('static/images/gallery/google03.jpg')"></span>
+                <div class="wrap fadeInUp">
+                    <div class="grid content-center">
+                        <div class="column1 bg-trans-dark">
+                            <pre>
 def future():
     my_list = ['22k','2li2show','18%']
     for i in range(len(my_list)):
@@ -558,11 +559,11 @@ def future():
 
     return my_list
                     </pre>
-            </div>
-        </div>
+                        </div>
+                    </div>
 
-    </div>
-</section>
+                </div>
+            </section>
         </article>
         <!-- end article -->
     </main>
@@ -578,9 +579,33 @@ def future():
 
     <!-- Required -->
     <script src="static/js/webslides.js"></script>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/jquery.danmu.min.js"></script>
 
     <script>
         const ws = new WebSlides();
+        $(window).load(function () {
+            $("#danmu").danmu({ width: "100%", zindex: 10 });
+            $('#danmu').danmu('danmuStart');
+            nowtime = $('#danmu').data("nowTime");
+            var aDanmu = { text: "hello", color: "red", size: 1, position: 0, time: nowtime + 1 }; 
+            $('#danmu').danmu("addDanmu",aDanmu);
+        });
+
+        // socket.on('say', function (data) {
+        //     if (data.to == 'all') {
+        //         console.log(data.msg); 
+        //         if ($('#danmu').data("paused")){ 
+        //             nowtime = 0; 
+        //         } else { 
+        //             nowtime = $('#danmu').data("nowTime"); 
+        //         } 
+        //         color = ["white", "yellow", "orange", "red"]; 
+        //         var c = Math.floor((Math.random() * color.length)); 
+        //         var aDanmu = { text: data.msg, color: color[c], size: 1, position: 0, time: nowtime + 1 }; 
+        //         $('#danmu').danmu("addDanmu", aDanmu);
+        //     }
+        // });
     </script>
 
     <!-- OPTIONAL - svg-icons.js (fontastic.me - Font Awesome as svg icons) -->
