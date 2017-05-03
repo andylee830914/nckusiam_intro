@@ -77,6 +77,7 @@
     <!-- Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#333333">
+    <script src="http://dpt.emath.tw:7777/socket.io/socket.io.js" type="text/javascript"></script>
     <style>
         .flexblock li h2 {
             font-size: 25px;
@@ -421,6 +422,9 @@
                             <a href="#">
                                 <figure>
                                     <img alt="Thumbnail" src="static/images/gallery/mlgpu/0502/P_20170502_192833.jpg">
+                                <figcaption>
+                                        <p>Shape Matching and Object Recognition</p>
+                                </figcaption>
                                 </figure>
                             </a>
                         </li>
@@ -591,7 +595,27 @@ def future():
             var aDanmu = { text: "hello", color: "red", size: 1, position: 0, time: nowtime + 1 }; 
             $('#danmu').danmu("addDanmu",aDanmu);
         });
+        $(document).ready(function () {
+        // NodeJS Server
+        var nodejs_server = "dpt.emath.tw:7777";       
+        // 進行 connect
+        var socket = io.connect("http://" + nodejs_server);
+        //var add=0;
+        // 偵聽 nodejs 事件
+            socket.on("say", function (data) {
+                console.log(data.msg); 
+                if ($('#danmu').data("paused")){ 
+                    nowtime = 0; 
+                } else { 
+                    nowtime = $('#danmu').data("nowTime"); 
+                } 
+                color = ["blue", "yellow", "orange", "red"]; 
+                var c = Math.floor((Math.random() * color.length)); 
+                var aDanmu = { text: data.msg, color: color[c], size: 1, position: 0, time: nowtime + 1 }; 
+                $('#danmu').danmu("addDanmu", aDanmu);
+            });
 
+        });
         // socket.on('say', function (data) {
         //     if (data.to == 'all') {
         //         console.log(data.msg); 
