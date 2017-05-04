@@ -621,16 +621,17 @@ def future():
         var nodejs_server = "dpt.emath.tw:7777";
         var socket = io.connect("http://" + nodejs_server);
         $(window).load(function () {
+
+            socket.emit('say', { msg: "歡迎使用彈幕系統" });            
+        });
+        $(document).ready(function () {    
             $("#danmu").danmu({ 
                 width: "100%",
                 height:300, 
                 zindex: 10 ,
                 fontSizeSmall:24, 
                 FontSizeBig:26,});
-            $('#danmu').danmu('danmuStart');
-            socket.emit('say', { msg: "歡迎使用彈幕系統" });            
-        });
-        $(document).ready(function () {         
+            $('#danmu').danmu('danmuStart');     
             socket.on("say", function (data) {
                 console.log(data.msg);
                 if ($('#danmu').data("paused")) {
