@@ -96,6 +96,9 @@
             -webkit-text-fill-color: transparent;
             white-space: pre;
         }
+        p {
+            font-size:20px;
+        }
     </style>
 
 </head>
@@ -126,6 +129,7 @@
                             Home Page
                         </a>
                     </p>
+                    <p>國立成功大學應用數學所 李昱勳</p>
                 </div>
                 <!-- .end .wrap -->
             </section>
@@ -407,6 +411,7 @@
             <section>
                 <div class="wrap">
                     <h2>讀書會在讀什麼？</h2>
+                    <p>我們絕對沒有在讀臉書喔！</p>
                     <hr>
                     <ul class="flexblock gallery">
                         <li>
@@ -568,7 +573,7 @@
                     <div class="grid content-center">
                         <div class="column1 bg-trans-dark">
                             <pre>
-def past():
+def past(): #since 2015
     my_past = ['689','426','633']
     for i in range(len(my_past)):
         my_past.pop()
@@ -621,8 +626,8 @@ def future():
         var nodejs_server = "dpt.emath.tw:7777";
         var socket = io.connect("http://" + nodejs_server);
         $(window).load(function () {
-
-            socket.emit('say', { msg: "歡迎使用彈幕系統" });            
+            // check danmu socket connected 
+            // socket.emit('say', { msg: "歡迎使用彈幕系統" });            
         });
         $(document).ready(function () {    
             $("#danmu").danmu({ 
