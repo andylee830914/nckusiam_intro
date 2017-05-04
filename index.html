@@ -129,6 +129,15 @@
                 </div>
                 <!-- .end .wrap -->
             </section>
+            <section class="aligncenter">
+    <div class="wrap">
+        <h2>連上這個網站</h2>
+                <figure>
+                    <img src="static/images/chart.png" class="size-25">
+                </figure>
+    </div>
+    <!-- .end .wrap -->
+</section>
 
             <section class="bg-black aligncenter">
                 <span class="background-right-bottom" style="background-image:url('static/images/ycshu.png'); z-index:5;opacity: .87;"></span>
@@ -609,6 +618,8 @@ def future():
 
     <script>
         const ws = new WebSlides();
+        var nodejs_server = "dpt.emath.tw:7777";
+        var socket = io.connect("http://" + nodejs_server);
         $(window).load(function () {
             $("#danmu").danmu({ 
                 width: "100%",
@@ -617,17 +628,9 @@ def future():
                 fontSizeSmall:24, 
                 FontSizeBig:26,});
             $('#danmu').danmu('danmuStart');
-            nowtime = $('#danmu').data("nowTime");
-            var aDanmu = { text: "hello", color: "red", size: 1, position: 0, time: nowtime + 1 };
-            $('#danmu').danmu("addDanmu", aDanmu);
+            socket.emit('say', { msg: "歡迎使用彈幕系統" });            
         });
-        $(document).ready(function () {
-            // NodeJS Server
-            var nodejs_server = "dpt.emath.tw:7777";
-            // 進行 connect
-            var socket = io.connect("http://" + nodejs_server);
-            //var add=0;
-            // 偵聽 nodejs 事件
+        $(document).ready(function () {         
             socket.on("say", function (data) {
                 console.log(data.msg);
                 if ($('#danmu').data("paused")) {
