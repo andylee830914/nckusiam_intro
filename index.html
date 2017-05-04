@@ -87,6 +87,7 @@
             font-size: 22px;
         }
         
+        /* from pycon 2017 website */
         pre {
             margin-top: 25px;
             text-shadow: 0 1px 0 rgba(63, 107, 169, 0);
@@ -619,6 +620,7 @@ def future():
     <!-- Required -->
     <script src="static/js/webslides.js"></script>
     <script src="static/js/jquery.min.js"></script>
+    <!-- jquery.danmu.js (//github.com/chiruom/danmu/) - Licensed under the MIT license-->
     <script src="static/js/jquery.danmu.min.js"></script>
 
     <script>
@@ -651,20 +653,6 @@ def future():
             });
 
         });
-        // socket.on('say', function (data) {
-        //     if (data.to == 'all') {
-        //         console.log(data.msg); 
-        //         if ($('#danmu').data("paused")){ 
-        //             nowtime = 0; 
-        //         } else { 
-        //             nowtime = $('#danmu').data("nowTime"); 
-        //         } 
-        //         color = ["white", "yellow", "orange", "red"]; 
-        //         var c = Math.floor((Math.random() * color.length)); 
-        //         var aDanmu = { text: data.msg, color: color[c], size: 1, position: 0, time: nowtime + 1 }; 
-        //         $('#danmu').danmu("addDanmu", aDanmu);
-        //     }
-        // });
     </script>
 
     <!-- OPTIONAL - svg-icons.js (fontastic.me - Font Awesome as svg icons) -->
