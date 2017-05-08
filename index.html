@@ -625,34 +625,34 @@ def future():
 
     <script>
         const ws = new WebSlides();
-        var nodejs_server = "dpt.emath.tw:443";
-        var socket = io.connect("http://" + nodejs_server);
-        $(window).load(function () {
-            // check danmu socket connected 
-            socket.emit('say', { msg: "歡迎使用彈幕系統" });            
-        });
-        $(document).ready(function () {    
-            $("#danmu").danmu({ 
-                width: "100%",
-                height:300, 
-                zindex: 10 ,
-                fontSizeSmall:30, 
-                FontSizeBig:40,});
-            $('#danmu').danmu('danmuStart');     
-            socket.on("say", function (data) {
-                if ($('#danmu').data("paused")) {
-                    nowtime = 0;
-                } else {
-                    nowtime = $('#danmu').data("nowTime");
-                }
-                color = ["blue", "#9ACD32", "orange", "red"];
-                var c = Math.floor((Math.random() * color.length));
-                var aDanmu = { text: data.msg, color: color[c], size: 1, position: 0, time: nowtime + 1 };
-                console.log(aDanmu);
-                $('#danmu').danmu("addDanmu", aDanmu);
-            });
+        // var nodejs_server = "dpt.emath.tw:443";
+        // var socket = io.connect("http://" + nodejs_server);
+        // $(window).load(function () {
+        //     // check danmu socket connected 
+        //     socket.emit('say', { msg: "歡迎使用彈幕系統" });            
+        // });
+        // $(document).ready(function () {    
+        //     $("#danmu").danmu({ 
+        //         width: "100%",
+        //         height:300, 
+        //         zindex: 10 ,
+        //         fontSizeSmall:30, 
+        //         FontSizeBig:40,});
+        //     $('#danmu').danmu('danmuStart');     
+        //     socket.on("say", function (data) {
+        //         if ($('#danmu').data("paused")) {
+        //             nowtime = 0;
+        //         } else {
+        //             nowtime = $('#danmu').data("nowTime");
+        //         }
+        //         color = ["blue", "#9ACD32", "orange", "red"];
+        //         var c = Math.floor((Math.random() * color.length));
+        //         var aDanmu = { text: data.msg, color: color[c], size: 1, position: 0, time: nowtime + 1 };
+        //         console.log(aDanmu);
+        //         $('#danmu').danmu("addDanmu", aDanmu);
+        //     });
 
-        });
+        // });
     </script>
 
     <!-- OPTIONAL - svg-icons.js (fontastic.me - Font Awesome as svg icons) -->
